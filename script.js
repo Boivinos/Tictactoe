@@ -2,23 +2,25 @@ let croix = document.getElementsByClassName("croix");
 let rond = document.getElementsByClassName("rond");
 let caseArea = document.getElementsByClassName("caseArea");
 
+let gameStatus = ["", "", "", "", "", "", "", "", ""]
+
 for (let i = 0; i < croix.length; i++) {
     croix[i].style.visibility = "hidden";
     rond[i].style.visibility = "hidden";
 }
 
-function winner(shape) {
-    let i = 0;
-    for (i; i < 7; i += 3)
-        if ((shape[i].style.visibility === "visible"
-            && shape[i + 1].style.visibility === "visible"
-            && shape[i + 2].style.visibility === "visible")
-            || (shape[i].style.visibility === "visible"
-                && shape[i + 3].style.visibility === "visible"
-                && shape[i + 6].style.visibility === "visible")) {
-
-            alert(`We have a winner !`)
+function winner() {
+    for (let i = 0; i < gameStatus.length; i++) {
+        if (gameStatus[i] != "") {
+            if (gameStatus[i] == gameStatus[i + 1] && gameStatus[i] == gameStatus[i + 2]) {
+                console.log(`${gameStatus[i]} is the winner !`)
+            }
+            if (gameStatus[i] == gameStatus[i + 3] && gameStatus[i] == gameStatus[i + 6]) {
+                console.log(`${gameStatus[i]} is the winner !`)
+            }
         }
+    }
+
 }
 
 
@@ -28,12 +30,16 @@ function turn(shape) {
         caseArea[i].onclick = function () {
             if (shape === "croix") {
                 croix[i].style.visibility = "visible";
+                gameStatus.splice(i, 1, "Red")
+                console.log(gameStatus)
                 turn("rond")
-                winner(croix)
+                winner()
             } else {
                 rond[i].style.visibility = "visible";
+                gameStatus.splice(i, 1, "Green")
+                console.log(gameStatus)
                 turn("croix")
-                winner(rond)
+                winner()
             }
         }
 
