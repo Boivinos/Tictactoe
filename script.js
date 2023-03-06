@@ -8,43 +8,41 @@ for (let i = 0; i < croix.length; i++) {
 }
 
 function winner(shape) {
-    for (let i = 0; i < 3; i += 3)
+    let i = 0;
+    for (i; i < 7; i += 3)
         if ((shape[i].style.visibility === "visible"
             && shape[i + 1].style.visibility === "visible"
             && shape[i + 2].style.visibility === "visible")
-            || shape[i].style.visibility === "visible"
-            && shape[i + 3].style.visibility === "visible"
-            && shape[i + 6].style.visibility === "visible") {
+            || (shape[i].style.visibility === "visible"
+                && shape[i + 3].style.visibility === "visible"
+                && shape[i + 6].style.visibility === "visible")) {
 
-            alert("Green is the winner !")
+            alert(`We have a winner !`)
         }
 }
 
 
-function turn(playerColor) {
-    if (playerColor == "red") {
-        for (let i = 0; i < caseArea.length; i++) {
-            caseArea[i].onclick = function () {
+function turn(shape) {
+
+    for (let i = 0; i < caseArea.length; i++) {
+        caseArea[i].onclick = function () {
+            if (shape === "croix") {
                 croix[i].style.visibility = "visible";
-                turn("green")
-            }
-        }
-    }
-    if (playerColor == "green") {
-        for (let i = 0; i < caseArea.length; i++) {
-            caseArea[i].onclick = function () {
+                turn("rond")
+                winner(croix)
+            } else {
                 rond[i].style.visibility = "visible";
-                turn("red")
+                turn("croix")
                 winner(rond)
-
             }
         }
+
     }
 }
 
 
 
-turn("red")
+turn("croix")
 
 
 
