@@ -1,0 +1,55 @@
+:root {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.grille {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    width: 500px;
+    height: 500px;
+
+
+
+}
+
+
+
+.caseArea {
+    border: 3px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.rond {
+
+    text-align: center;
+    font-weight: 800;
+    color: green;
+    font-size: 8em;
+    position: absolute;
+}
+
+.croix {
+
+    text-align: center;
+    font-weight: 800;
+    color: red;
+    font-size: 8em;
+    position: absolute;
+}
+
+.visible {
+    visibility: visible;
+}
+
+.invisible {
+    visibility: hidden;
+}
