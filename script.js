@@ -7,9 +7,15 @@ for (let i = 0; i < croix.length; i++) {
     rond[i].style.visibility = "hidden";
 }
 
-function winner() {
+function winner(shape) {
     for (let i = 0; i < 3; i += 3)
-        if (rond[i].style.visibility === "visible" && rond[i + 1].style.visibility === "visible" && rond[i + 2].style.visibility === "visible") {
+        if ((shape[i].style.visibility === "visible"
+            && shape[i + 1].style.visibility === "visible"
+            && shape[i + 2].style.visibility === "visible")
+            || shape[i].style.visibility === "visible"
+            && shape[i + 3].style.visibility === "visible"
+            && shape[i + 6].style.visibility === "visible") {
+
             alert("Green is the winner !")
         }
 }
@@ -29,7 +35,7 @@ function turn(playerColor) {
             caseArea[i].onclick = function () {
                 rond[i].style.visibility = "visible";
                 turn("red")
-                winner()
+                winner(rond)
 
             }
         }
