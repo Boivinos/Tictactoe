@@ -5,6 +5,23 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+h1 {
+    margin: 0;
+}
+
+h2 {
+    text-align: center;
+    margin: 0;
+}
+
+.titre-green {
+    color: green;
+}
+
+.titre-red {
+    color: red;
+}
+
 .grille {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -30,7 +47,7 @@
 
 }
 
-.rond {
+.caseArea .green {
 
     text-align: center;
     font-weight: 800;
@@ -39,7 +56,7 @@
     position: absolute;
 }
 
-.croix {
+.caseArea .red {
 
     text-align: center;
     font-weight: 800;
@@ -52,12 +69,40 @@
     margin: 0 auto;
     width: 30%;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
 
 }
 
+.button-container .red {
+    background-color: red;
+    border: 1px solid red;
+}
+
+.button-container .red:hover {
+    color: red;
+
+}
+
+.button-container .green {
+    background-color: green;
+    border: 1px solid green;
+}
+
+.button-container .green:hover {
+    color: green;
+}
+
 .start-game {
-    margin-top: 20px;
+    margin: 30px 0;
+    padding: 5% 0;
+    width: 40%;
+    border: none;
+    border-radius: 5px;
+}
+
+.start-game:hover {
+    cursor: pointer;
+    background-color: white;
 }
 
 
@@ -73,4 +118,8 @@
     width: 200px;
     height: 200px;
     background-color: red;
+}
+
+.tourJoueur {
+    height: 80px;
 }
