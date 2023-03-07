@@ -48,10 +48,29 @@
     position: absolute;
 }
 
+.button-container {
+    margin: 0 auto;
+    width: 30%;
+    display: flex;
+    justify-content: center;
+
+}
+
+.start-game {
+    margin-top: 20px;
+}
+
+
 .visible {
     visibility: visible;
 }
 
 .invisible {
     visibility: hidden;
+}
+
+.test {
+    width: 200px;
+    height: 200px;
+    background-color: red;
 }

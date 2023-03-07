@@ -2,6 +2,7 @@ let croix = document.getElementsByClassName("croix");
 let rond = document.getElementsByClassName("rond");
 let caseArea = document.getElementsByClassName("caseArea");
 let grille = document.getElementById("grille");
+let startGame = document.getElementById("start-game")
 let gameOver = false;
 let players = ["Red", "Green"]
 let gameStatus = ["", "", "", "", "", "", "", "", ""]
@@ -10,6 +11,8 @@ for (let i = 0; i < croix.length; i++) {
     croix[i].style.visibility = "hidden";
     rond[i].style.visibility = "hidden";
 }
+
+
 
 function winner() {
 
@@ -34,29 +37,45 @@ function winner() {
             }
         }
     }
+    console.log("finbouclewinner " + gameOver)
 }
 
 function turn(shape) {
-    for (let i = 0; i < caseArea.length; i++) {
-        caseArea[i].onclick = function () {
-            if (gameStatus[i] == "" && shape === "croix") {
-                croix[i].style.visibility = "visible";
-                gameStatus.splice(i, 1, "Red")
-                turn("rond")
-                winner()
-            } else if (gameStatus[i] == "") {
-                rond[i].style.visibility = "visible";
-                gameStatus.splice(i, 1, "Green")
-                turn("croix")
-                winner()
-            } else {
-                console.log("Cette case est déjà occupée")
+    console.log("début boucle tour " + gameOver)
+    if (gameOver == true) {
+
+        console.log("Fin du jeu");
+        return;
+    } else if (gameOver == false) {
+        for (let i = 0; i < caseArea.length; i++) {
+            caseArea[i].onclick = function () {
+                if (gameStatus[i] == "" && shape === "croix" && gameOver == false) {
+                    croix[i].style.visibility = "visible";
+                    gameStatus.splice(i, 1, "Red")
+                    turn("rond")
+                    winner()
+                } else if (gameStatus[i] == "" && gameOver == false) {
+                    rond[i].style.visibility = "visible";
+                    gameStatus.splice(i, 1, "Green")
+                    turn("croix")
+                    winner()
+                } else if (gameStatus[i] == "X" || gameStatus[i] == "O") {
+                    console.log("Cette case est déjà occupée")
+                }
             }
         }
+
     }
 }
 
-document.getElementById("grille").onclick = turn("croix")
+startGame.onclick = function () {
+    turn("croix")
+}
+
+let test = document.getElementById("test")
+test.innerHTML = "X"
+
+
 
 
 
