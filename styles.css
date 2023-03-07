@@ -71,6 +71,7 @@ h2 {
     display: flex;
     justify-content: space-between;
 
+
 }
 
 .button-container .red {
@@ -98,6 +99,7 @@ h2 {
     width: 40%;
     border: none;
     border-radius: 5px;
+    color: white;
 }
 
 .start-game:hover {
